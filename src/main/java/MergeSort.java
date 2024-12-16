@@ -37,7 +37,7 @@ public class MergeSort {
                 vetor[k++] = esquerda[i++];
             } else {
                 vetor[k++] = direita[j++];
-            }
+            }   
         }
 
         while (i < n1) {

@@ -14,6 +14,8 @@ public class Main {
             int[] vetorQuickSort = new int[tamanho];
             int[] vetorMergeSort = new int[tamanho];
 
+            organizacaoVetores(vetorQuickSort, vetorMergeSort);
+
             QuickSort quickSort = new QuickSort();
             MergeSort mergeSort = new MergeSort();
 

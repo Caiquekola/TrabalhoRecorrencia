@@ -1,8 +1,10 @@
+import java.util.Random;
 import java.util.Stack;
 
 public class QuickSort {
 
     private int comparacoes = 0; // Contador de comparações
+    private static final Random random = new Random();
 
     public void sort(int[] array) {
         quickSortIterativo(array, 0, array.length - 1);
@@ -26,6 +28,9 @@ public class QuickSort {
     }
 
     private int partition(int[] array, int low, int high) {
+        // Escolha do pivô aleatório
+        int pivotIndex = low + random.nextInt(high - low + 1);
+        swap(array, pivotIndex, high);
         int pivot = array[high];
         int i = low - 1;
 
