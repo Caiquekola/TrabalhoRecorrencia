@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -16,8 +17,14 @@ public class Main {
 
             organizacaoVetores(vetorQuickSort, vetorMergeSort);
 
+            QuickSortUnorded quickSortUnorded = new QuickSortUnorded();
             QuickSort quickSort = new QuickSort();
             MergeSort mergeSort = new MergeSort();
+
+            long inicioQuickU = System.nanoTime();
+            quickSortUnorded.quickSort(vetorQuickSort,0,vetorQuickSort.length-1);
+            long tempoQuickU = System.nanoTime() - inicioQuickU;
+
 
             long inicioQuick = System.nanoTime();
             quickSort.sort(vetorQuickSort);
@@ -34,6 +41,9 @@ public class Main {
             System.out.println("MergeSort - Comparações: " + mergeSort.getComparacoes() +
                     ", Tempo: " + tempoMerge / 1_000_000.0 + " ms");
             System.out.println();
+            System.out.println("QuickSortUn - Comparações: " + quickSortUnorded.getComparacoes() +
+                    ", Tempo: " + tempoQuickU / 1_000_000.0 + " ms");
+            System.out.println();
         }
 
 
@@ -44,6 +54,7 @@ public class Main {
     //Função para gerar número aleatório
     private static int[] geradorDeNumeros(int tamanho) {
         Set<Integer> numeros = new HashSet<>();
+        //ArrayList<Integer> numeros = new ArrayList<>();
         while (numeros.size() < tamanho) {
             numeros.add(random.nextInt(2*tamanho));
         }
@@ -60,8 +71,8 @@ public class Main {
         int tamanho = vetorQuickSort.length;
         int[] vetorGerado = geradorDeNumeros(tamanho);
         for (int i = 0; i < tamanho; i++) {
-            vetorQuickSort[i] = vetorGerado[i];
             vetorMergeSort[i] = vetorGerado[i];
+            vetorQuickSort[i] = vetorGerado[i];
         }
     }
 }
